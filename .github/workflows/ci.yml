@@ -22,6 +22,14 @@ jobs:
           cache: maven
       - name : Fournir access au runner
         run: chmod +x mvnw
+
+      - name: Publier le rapport JaCoCo
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: jacoco-reports
+          path: TP3_TaAnhQuoc/target/site/jacoco
+
       - name: Build and run tests
         run: ./mvnw -B clean package -DskipTests   # produit le .jar dans target/
 
