@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-java@v5
         with:
-          java-version: '21'
+          java-version: ${{ matrix.java }}
           distribution: 'temurin'
           cache: maven
       - name : Fournir access au runner
@@ -29,5 +29,6 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: application-jar
+          java-version: '21'
           path: target/*.jar   
       
