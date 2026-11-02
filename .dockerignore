@@ -1,0 +1,6 @@
+target/classes
+target/surefire-reports
+.git/
+.idea/
+*.log
+node_modules/
