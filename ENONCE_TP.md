@@ -81,8 +81,7 @@ Exécutez ces scénarios et notez le code HTTP obtenu ainsi que le résultat et 
 | 2 | `POST /api/livres` avec un nouveau livre | Code 201, id attribué |
 | 3 | `POST /api/livres` avec un titre vide | Code 400 |
 | 4 | `POST /api/livres/1/emprunter` deux fois de suite | 200 puis 409 |
-| 5 | `GET /api/livres/2/frais-retard?joursRetard=100` | Notez le montant : il vous servira pour la partie C |
-
+| 5 | `GET /api/livres/2/frais-retard?joursRetard=100` | Notez le montant : il 
 Ces réponses vont dans votre `README.md` : branche `feature/lecture-code`, puis Pull Request (voir les règles de la partie 0).
 
 ---
