@@ -12,8 +12,8 @@ import java.util.List;
 public class LivreService {
 
     private final LivreRepository repository;
-    private static int anneePublicationVieux = 1450
-    private static int anneePublicationNouveau = 2100
+    private static int anneePublicationVieux = 1450;
+    private static int anneePublicationNouveau = 2100;
     public LivreService(LivreRepository repository) {
         this.repository = repository;
     }
