@@ -12,7 +12,8 @@ import java.util.List;
 public class LivreService {
 
     private final LivreRepository repository;
-
+    private static int anneePublicationVieux = 1450
+    private static int anneePublicationNouveau = 2100
     public LivreService(LivreRepository repository) {
         this.repository = repository;
     }
@@ -32,7 +33,7 @@ public class LivreService {
         if (auteur == null || auteur.isBlank()) {
             throw new IllegalArgumentException("L'auteur est obligatoire");
         }
-        if (anneePublication < 1450 || anneePublication > 2100) {
+        if (anneePublication < anneePublicationVieux || anneePublication > anneePublicationNouveau) {
             throw new IllegalArgumentException("L'année de publication est invalide");
         }
         Livre livre = new Livre(null, titre, auteur, isbn, anneePublication, categorie);
@@ -47,7 +48,7 @@ public class LivreService {
         if (auteur == null || auteur.isBlank()) {
             throw new IllegalArgumentException("L'auteur est obligatoire");
         }
-        if (anneePublication < 1450 || anneePublication > 2100) {
+        if (anneePublication < anneePublicationVieux || anneePublication > anneePublicationNouveau) {
             throw new IllegalArgumentException("L'année de publication est invalide");
         }
         livre.setTitre(titre);

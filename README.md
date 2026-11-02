@@ -46,7 +46,7 @@ Elles sont stockés temporairement dans la mémoire, et quand l'application red�
 LivreController -> LivreService -> emprunter() -> LivreRepository -> save()
 
 ## Questions d'examen A.3
-1. GET /api/livres
+1. GET /api/livres :
 Cela retourne Le Petit Prince, une brève histoire du temps et Bonheur d'occasion.
 2. POST /api/livres
 {
@@ -84,6 +84,14 @@ Code 400
 }
 
 ---
+
+## Partie D Code Smell
+| Code Smell | Fichier | Ligne | Raison |
+| -------- | ------- | -------- | ------- |
+| Duplicated Code | LivreService  | Ligne 35 et 50 | Le code est en double dans cette partie.|
+|  |     |          |         |
+|     |    |          |         |
+
 
 > Remplacez le contenu ci-dessous par vos réponses du TP (voir `ENONCE_TP.md`).
 
