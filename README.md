@@ -34,6 +34,18 @@ API REST de gestion d'une petite bibliothèque (Spring Boot 3.5, Java 25, archit
 | POST | `/api/livres/{id}/retourner` | Retourner un livre |
 | GET | `/api/livres/{id}/frais-retard?joursRetard=N` | Frais de retard en $ |
 
+## Questions d'examens
+1. Quelle classe joue le rôle du **Modèle**, du **Contrôleur** ? Où se trouve la **logique métier** ?
+Le modèle c'est un entité (une classe qui représente les objets de livre ou une modèle de donnée). Le contrôleur c'est un point d'entrée pour qu'on accèss au service et la logique du métier c'est LivreService qui contient la logique des fonctions.
+
+2. Que fait `GestionnaireErreurs` et quel code HTTP obtient-on pour un livre introuvable ? Et pour un double emprunt ?
+GestionnaireErreurs remplace les erreurs d'exceptions gérer par l'application et on met à la place notre propre erreur pour notre application de bibliothéque. Le code 404 veut dire que le livre est introuvable ou elle n'existe pas. Et l'erreur 409 retourne une erreur que le livre est déja emprunté.
+3. Où les données sont-elles stockées ? Que se passe-t-il quand l'application redémarre ?
+Elles sont stockés temporairement dans la mémoire, et quand l'application redémarre. Elle recréerait les données.
+4. Suivez le trajet complet d'un appel `POST /api/livres/1/emprunter` : quelles classes/méthodes sont appelées, dans quel ordre ?
+LivreController -> LivreService -> emprunter() -> LivreRepository -> save()
+
 ---
 
 > Remplacez le contenu ci-dessous par vos réponses du TP (voir `ENONCE_TP.md`).
+
