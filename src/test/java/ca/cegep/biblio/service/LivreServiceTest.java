@@ -1,13 +1,22 @@
 package ca.cegep.biblio.service;
 
-import ca.cegep.biblio.repository.LivreRepository;
-import org.junit.jupiter.api.Disabled;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import ca.cegep.biblio.model.Livre;
+import ca.cegep.biblio.repository.LivreRepository;
 /**
  * TP partie C : à vous d'implémenter les 3 tests ci-dessous.
  * Retirez @Disabled de chaque test une fois son implémentation écrite.
@@ -38,20 +47,38 @@ class LivreServiceTest {
     // ---------- 1 test sur une exception (assertThrows) ----------
 
     @Test
-    @Disabled("À implémenter")
     void emprunter_livreDejaEmprunte_lanceIllegalStateException() {
         // À tester : emprunter un livre dont disponible == false lance une IllegalStateException.
         // Indice : le repository (mock) doit retourner ce livre pour son id.
+
+            Long id = 1L;
+            Livre livre = new Livre();
+            livre.setDisponible(false);
+            when(repository.findById(id)).thenReturn(Optional.of(livre));
+
+            assertEquals("Ce livre est déjà emprunté",assertThrows(IllegalStateException.class, () -> service.emprunter(id)));
+            verify(repository, never()).save(any());
+        
     }
 
     // ---------- 1 test avec mock (when / thenReturn / verify) ----------
 
     @Test
-    @Disabled("À implémenter")
     void emprunter_livreDisponible_marqueIndisponibleEtSauvegarde() {
         // À tester : emprunter un livre disponible le rend indisponible
         // et appelle repository.save(...) exactement une fois.
         // Définissez le comportement du mock avec when(...).thenReturn(...).
+        Long id = 1L;
+        Livre livre = new Livre();
+        livre.setDisponible(true);
+        when(repository.findById(id)).thenReturn(Optional.of(livre));
+        when(repository.save(livre)).thenReturn(livre);
+
+        Livre resultat = service.emprunter(id);
+
+        assertFalse(resultat.isDisponible());
+
+        verify(repository.save(livre));
     }
 }
 
