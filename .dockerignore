@@ -1,0 +1,7 @@
+.git/
+.idea/
+*.log
+node_modules/
+.github/
+.mvn/
+.env
