@@ -20,5 +20,14 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
           cache: maven
+      - name : Fournir access au runner
+        run: chmod +x mvnw
       - name: Build and run tests
-        run: ./mvnw -B clean verify
+        run: ./mvnw -B clean package -DskipTests   # produit le .jar dans target/
+
+      - name: Publier le .jar en artefact
+        uses: actions/upload-artifact@v5
+        with:
+          name: application-jar
+          path: target/*.jar   
+      
