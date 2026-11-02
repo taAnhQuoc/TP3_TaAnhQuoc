@@ -54,9 +54,11 @@ class LivreServiceTest {
             Long id = 1L;
             Livre livre = new Livre();
             livre.setDisponible(false);
+            
             when(repository.findById(id)).thenReturn(Optional.of(livre));
+            IllegalStateException exception = assertThrows(IllegalStateException.class, () -> service.emprunter(id));
 
-            assertEquals("Ce livre est déjà emprunté",assertThrows(IllegalStateException.class, () -> service.emprunter(id)));
+            assertEquals("Ce livre est déjà emprunté",exception.getMessage());
             verify(repository, never()).save(any());
         
     }
@@ -78,7 +80,7 @@ class LivreServiceTest {
 
         assertFalse(resultat.isDisponible());
 
-        verify(repository.save(livre));
+        verify(repository).save(livre);
     }
 }
 
