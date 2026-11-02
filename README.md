@@ -1,39 +1,5 @@
 # biblio-api
 
-API REST de gestion d'une petite bibliothèque (Spring Boot 3.5, Java 25, architecture MVC).
-
-## Démarrer
-
-```bash
-./mvnw spring-boot:run
-```
-
-- Swagger UI : http://localhost:8080/swagger-ui.html
-- Les données sont gardées **en mémoire** (perdues à l'arrêt).
-
-## Structure
-
-| Package | Rôle |
-|---|---|
-| `model` | Le modèle : `Livre` |
-| `repository` | Accès aux données (en mémoire) |
-| `service` | Logique métier |
-| `controller` | Contrôleur REST (+ `LivreRequest`, corps JSON des requêtes) |
-| `exception` | Exceptions et traduction en codes HTTP |
-
-## Endpoints
-
-| Méthode | URL | Description |
-|---|---|---|
-| GET | `/api/livres` | Lister les livres |
-| GET | `/api/livres/{id}` | Obtenir un livre |
-| POST | `/api/livres` | Ajouter un livre |
-| PUT | `/api/livres/{id}` | Modifier un livre |
-| DELETE | `/api/livres/{id}` | Supprimer un livre |
-| POST | `/api/livres/{id}/emprunter` | Emprunter un livre |
-| POST | `/api/livres/{id}/retourner` | Retourner un livre |
-| GET | `/api/livres/{id}/frais-retard?joursRetard=N` | Frais de retard en $ |
-
 ## Questions d'examen A.1
 1. Quelle classe joue le rôle du **Modèle**, du **Contrôleur** ? Où se trouve la **logique métier** ?
 Le modèle c'est un entité (une classe qui représente les objets de livre ou une modèle de donnée). Le contrôleur c'est un point d'entrée pour qu'on accèss au service et la logique du métier c'est LivreService qui contient la logique des fonctions.
@@ -93,5 +59,7 @@ Code 400
 | Long Method   |  LivreService  |  49 a 57 | On separe la validation et la modification. Une fonctione gere un probleme a la fois |
 
 
-> Remplacez le contenu ci-dessous par vos réponses du TP (voir `ENONCE_TP.md`).
+## Partie E Workflow
+un lien vers le workflow : https://github.com/taAnhQuoc/TP3_TaAnhQuoc/actions/runs/41547868950
+
 
