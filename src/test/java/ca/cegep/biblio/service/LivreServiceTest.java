@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * TP partie C : à vous d'implémenter les 3 tests ci-dessous.
  * Retirez @Disabled de chaque test une fois son implémentation écrite.
@@ -25,11 +25,14 @@ class LivreServiceTest {
     // ---------- 1 test simple (sans mock) ----------
 
     @Test
-    @Disabled("À implémenter")
     void calculerFraisRetard_longRetard_plafonneLeMontant() {
         // À tester : pour une catégorie donnée, un très grand nombre de jours de retard
         // ne dépasse jamais le plafond de cette catégorie.
         // Indice : la méthode ne dépend pas du repository.
+        double resultat = service.calculerFraisRetard("JEUNESSE", 100);
+        double validation = 5.0;
+
+        assertEquals(validation,resultat);
     }
 
     // ---------- 1 test sur une exception (assertThrows) ----------
